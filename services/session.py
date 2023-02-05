@@ -6,6 +6,7 @@ class SessionService:
     SESSIONS_CREATOR_PATH = "./map-reduce/sessions-creator.py"
     SESSIONS_MERGER_PATH = "./map-reduce/sessions-merger.py"
 
+    # details regarding the sessions complexity are in the sessions-merger.py and sessions-creator.py scripts
     def create_sessions_data(self):
         mapreduce_inputs = glob.glob(self.DATA_PATH + 'input_*')
         for mapreduce_input in mapreduce_inputs:
