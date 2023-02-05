@@ -1,5 +1,7 @@
-# Total complexity of script
-# O(nlogn)*(number of keys of visitor id and url)
+# Total time and space complexity for merging sessions of constant session files:
+# when 'n' is the length of the biggest sessions array that the reducer may receive:
+# time complexity - O(nlogn)*(number of visitor id and url couples)
+# space complexity - O(n)*(number of visitor id and url couples)
 
 from mrjob.job import MRJob
 from mrjob.step import MRStep
@@ -16,21 +18,32 @@ class MRWordCount(MRJob):
     def session_start_compare(self, session):
         return float(session[0])
 
+    # 1 call to this method time and space complexity: O(1)
+    # the number of calls to this method is the number of rows in the input files
+    # therefore, total hash_strings complexity: O(1)*(number of rows)
     def hash_strings(self, string1, string2):
         key_to_hash = string1 + string2;
         hashed_string =  int(hashlib.sha1(key_to_hash.encode("utf-8")).hexdigest(), 16) % (10 ** 8)
         return hashed_string
 
 
-    # O(1) - memory + time
-    # O(1)*number_of_lines
+    # 1 call to this method time and space complexity: O(1)
+    # the number of calls to this method is the number of rows in the input files
+    # therefore, total mapper complexity: O(1)*(number of rows)
     def mapper(self, _, line):
         data = line.split(',')
         yield self.hash_strings(data[2], data[3]), data
 
-    # if n is the size of sessions:
-    # O(nlogn) - time complexity
-    # O(nlogn)*(number of keys of visitor id and url)
+    # In this method we receive a sessions array of a certain visitor id and url
+    # this method sorts and groups these sessions when possible
+    # when 'n' is the length of a certain sessions array that the reducer receive:
+    # 1 call to this method complexity:
+    # time complexity - O(nlogn)
+    # space complexity - O(n)
+    # the number of calls to this method is the number of visitor id and url couples (together)
+    # therefore, total reducer time and space complexity:
+    # time complexity - O(nlogn)*(number of visitor id and url couples)
+    # space complexity - O(n)*(number of visitor id and url couples)
     def reducer(self, _, values):
         sessions = list(values)
 

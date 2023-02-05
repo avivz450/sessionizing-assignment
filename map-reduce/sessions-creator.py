@@ -1,5 +1,5 @@
-# Total complexity of script
-# O(values)*(number of keys of visitor id and url)
+# Total time and space complexity for creating sessions of an input file:
+# O(n)*(number of visitor id and url couples), when n = page views array length
 
 from mrjob.job import MRJob
 from mrjob.step import MRStep
@@ -13,21 +13,29 @@ class MRWordCount(MRJob):
                    reducer=self.reducer)
         ]
 
-    # O(1) - memory + time
+    # 1 call to this method time and space complexity: O(1)
+    # the number of calls to this method is the number of rows in the input file
+    # therefore, total hash_strings complexity: O(1)*(number of rows)
     def hash_strings(self, string1, string2):
         key_to_hash = string1 + string2;
         hashed_string =  int(hashlib.sha1(key_to_hash.encode("utf-8")).hexdigest(), 16) % (10 ** 8)
         return hashed_string
 
-    # O(1) - memory + time
-    # O(1)*number_of_lines
+    # 1 call to this method time and space complexity: O(1)
+    # the number of calls to this method is the number of rows in the input file
+    # therefore, total mapper complexity: O(1)*(number of rows)
     def mapper(self, _, line):
        data = line.split(',')
        yield self.hash_strings(data[0], data[1]), data
 
-    # O(values) - memory + time complexity
-    # O(values)*(number of keys of visitor id and url)
-    def reducer(self, key, values):
+    # In this method we have a sorted by timestamp page views array, of a certain visitor id and url
+    # This method groups these page views into sessions
+    # 1 call to this method time and space complexity:
+    # O(page views array length)
+    # the number of calls to this method is the number of visitor id and url couples (together)
+    # therefore, total reducer time and space complexity:
+    # O(page views array length)*(number of visitor id and url couples)
+    def reducer(self, _, values):
         page_views_list = list(values)
         sessions = []
         last_session = None
