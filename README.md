@@ -1,6 +1,6 @@
 # Sessionizing assignment
 
-### Solution description
+### Solution description (need to update)
 
 ### How to run the program?
 + clone this repository to your local machine.
@@ -9,10 +9,12 @@
   After running that command, the program will create the sessions automatically from the input files (which are in the `data` folder).
   After finishing creating, you can pass your query request to the program through the command line.
 
-### Changes required for large scale input
+### Changes required for large scale input (need to update)
 + seperate mapper and reducer in other instances
 + fetch sessions from external db
 + use cache to reduce number of external calls to the db
 
-### Complexity
-+ defined in the program in notes
+### Complexity (need to check)
++ written in the code
+
+### Testing the code (need to update)
