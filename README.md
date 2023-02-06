@@ -5,7 +5,7 @@ I created a service that runs in the following order:
 1. Processes the data in the data folder, where the .csv input files are located, to create one .csv session file (corresponding to the input files).
 2. Reveals a user interface that allows entering several queries through the command line
 
-### What the sessions file will have?
+### What will be in the sessions file?
 The sessions file will have all the sessions corresponding to the input files, and each line will have the following fields:
 + session_length - length of the session
 + site_url - the main URL of the visited site
