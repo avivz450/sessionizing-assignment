@@ -2,8 +2,8 @@
 
 ## Solution description
 I created a service that runs in the following order:
-+ Processes the data in the data folder, where the .csv input files are located, to create one .csv session file (corresponding to the input files).
-+ Reveals a user interface that allows entering several queries through the command line
+1. Processes the data in the data folder, where the .csv input files are located, to create one .csv session file (corresponding to the input files).
+2. Reveals a user interface that allows entering several queries through the command line
 
 ### What the sessions file will have?
 The sessions file will have all the sessions corresponding to the input files, and each line will have the following fields:
