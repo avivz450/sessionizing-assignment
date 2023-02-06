@@ -3,7 +3,7 @@
 ## Solution description
 I created a service that runs in the following order:
 + Processes the data in the data folder, where the .csv input files are located, to create one .csv session file (corresponding to the input files).
-+ Reveals a user interface that allows to enter several queries through the command line
++ Reveals a user interface that allows entering several queries through the command line
 
 ### What the sessions file will have?
 The sessions file will have all the sessions corresponding to the input files, and each line will have the following fields:
@@ -39,7 +39,7 @@ The processing works by using the "Map Reduce" method twice:
 + Use a cluster of computers - put the mapper and reducer methods into separate instances. If needed, assign more instances for each one of them.
   The smaller inputs will be transferred to each one of the mapper instances
   Each reducer instance will handle some keys.
-+ Store and fetch the sessions from external DB (instead from in-memory)
++ Store and fetch the sessions from external DB (instead of from in-memory)
 + Implement cache in the API service to reduce the number of external calls to the DB once requesting a query
 
 ## Complexity
