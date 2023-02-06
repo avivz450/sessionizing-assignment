@@ -36,9 +36,10 @@ The processing works by using the "Map Reduce" method twice:
 ## Changes required for large scale input
 + Separate the "sessions API" from the sessions data process
 + Divide the large input data into smaller inputs
-+ Use a cluster of computers - put the mapper and reducer methods into separate instances. If needed, assign more instances for each one of them.
-  The smaller inputs will be transferred to each one of the mapper instances
-  Each reducer instance will handle some keys.
++ Use a cluster of computers - put the mapper and reducer methods into separate instances. 
+ + If needed, assign more instances for each one of them.
+ + The smaller inputs will be transferred to each one of the mapper instances
+ + Each reducer instance will handle some keys.
 + Store and fetch the sessions from external DB (instead of from in-memory)
 + Implement cache in the API service to reduce the number of external calls to the DB once requesting a query
 
