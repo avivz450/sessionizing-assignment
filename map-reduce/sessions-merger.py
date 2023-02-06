@@ -1,4 +1,4 @@
-# Total time and space complexity for merging sessions of constant session files:
+# Total time and space complexity for merging sessions of constant session files,
 # when 'n' is the length of the biggest sessions array that the reducer may receive:
 # time complexity - O(nlogn)*(number of visitor id and url couples)
 # space complexity - O(n)*(number of visitor id and url couples)
@@ -27,6 +27,7 @@ class MRWordCount(MRJob):
         return hashed_string
 
 
+    # this method maps the data by the visitor id and site url couple
     # 1 call to this method time and space complexity: O(1)
     # the number of calls to this method is the number of rows in the input files
     # therefore, total mapper complexity: O(1)*(number of rows)

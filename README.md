@@ -1,8 +1,8 @@
 # Sessionizing assignment
 
 ## Solution description (need to update)
-I created a service that works in the following order:
-+ Processes the data in the data folder, where the input files are located, to create one session file (corresponding to the input files).
+I created a service that runs in the following order:
++ Processes the data in the data folder, where the csv input files are located, to create one csv session file (corresponding to the input files).
 + Reveals a user interface that allows him to enter several queries through the command line
 
 ### What the sessions file will have?
@@ -11,10 +11,19 @@ The sessions file will have all the sessions corresponding to the input files, a
 + site_url - the main URL of the visited site
 + visitor_id - unique identifier of the visitor on that site
 
+for example:
+```
+...
+1706,www.s_3.com,visitor_2632
+2163,www.s_2.com,visitor_5388
+518,www.s_2.com,visitor_5388
+...
+```
+
 ### How the data process is made?
-The processing works by using the "MapReduce" method twice:
-1. For each input_i.csv file, an ouput_i.csv file is generated, which contains the sessions for that file.
-2. After creating the session files, we use this method again to combine them into one session file.
+The processing works by using the "Map Reduce" method twice:
+1. For each input_i.csv file, an ouput_i.csv file is generated - which contains the sessions for that file. more details about this stage are in `sessions-creator.py`
+2. After creating the session files, we use another "Map Reduce" method to combine them into one session file. more details about this stage are in `sessions-merger.py`
 
 ## How to run the program?
 + Clone this repository to your local machine.
