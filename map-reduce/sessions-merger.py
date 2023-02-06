@@ -18,22 +18,13 @@ class MRWordCount(MRJob):
     def session_start_compare(self, session):
         return float(session[0])
 
-    # 1 call to this method time and space complexity: O(1)
-    # the number of calls to this method is the number of rows in the input files
-    # therefore, total hash_strings complexity: O(1)*(number of rows)
-    def hash_strings(self, string1, string2):
-        key_to_hash = string1 + string2;
-        hashed_string =  int(hashlib.sha1(key_to_hash.encode("utf-8")).hexdigest(), 16) % (10 ** 8)
-        return hashed_string
-
-
     # this method maps the data by the visitor id and site url couple
     # 1 call to this method time and space complexity: O(1)
     # the number of calls to this method is the number of rows in the input files
     # therefore, total mapper complexity: O(1)*(number of rows)
     def mapper(self, _, line):
         data = line.split(',')
-        yield self.hash_strings(data[2], data[3]), data
+        yield data[2] + data[3], data
 
     # In this method we receive a sessions array of a certain visitor id and url
     # this method sorts and groups these sessions when possible
