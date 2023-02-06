@@ -36,7 +36,7 @@ The processing works by using the "Map Reduce" method twice:
 ## Changes required for large scale input (need to update)
 + Separate the "sessions API" and the sessions data process
 + Separate the mapper and reducer methods to some instances, according to the input size.
-Each mapper will handle amount of inputs that is known in advance (at most).
+Each mapper will handle (at most) amount of inputs that is known in advance.
 Each reducer will handle certain keys.
 If needed, assign more instances for the relevant method.
 + Fetch sessions from external DB (instead from in-memory)
