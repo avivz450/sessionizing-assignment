@@ -6,7 +6,7 @@ I created a service that runs in the following order:
 2. Reveals a user interface that allows entering several queries through the command line
 
 ### What will be in the sessions file?
-The sessions file will have all the sessions corresponding to the input files, and each line will have the following fields:
+The sessions file will have all the sessions corresponding to the input files, and each row will have the following fields:
 + session_length - length of the session
 + site_url - the main URL of the visited site
 + visitor_id - unique identifier of the visitor on that site
