@@ -2,7 +2,7 @@
 
 ## Solution description
 I created a service that runs in the following order:
-+ Processes the data in the data folder, where the csv input files are located, to create one csv session file (corresponding to the input files).
++ Processes the data in the data folder, where the .csv input files are located, to create one .csv session file (corresponding to the input files).
 + Reveals a user interface that allows him to enter several queries through the command line
 
 ### What the sessions file will have?
@@ -35,11 +35,11 @@ The processing works by using the "Map Reduce" method twice:
 
 ## Changes required for large scale input (need to update)
 + Separate the "sessions API" and the sessions data process
-+ Separate the mapper and reducer methods to some instances, according to the input size.
-Each mapper will handle (at most) amount of inputs that is known in advance.
-Each reducer will handle certain keys.
-If needed, assign more instances for the relevant method.
-+ Fetch sessions from external DB (instead from in-memory)
++ Separate the mapper and reducer methods into some instances, according to the input size.
+  Each mapper will handle (at most) the number of inputs that are known in advance.
+  Each reducer will handle certain keys.
+  If needed, assign more instances for the relevant method.
++ Fetch sessions from external DB (instead of from in-memory)
 + Use cache in the API service to reduce the number of external calls to the DB once requesting a query
 
 ## Complexity
