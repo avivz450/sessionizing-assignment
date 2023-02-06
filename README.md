@@ -1,6 +1,6 @@
 # Sessionizing assignment
 
-## Solution description (need to update)
+## Solution description
 I created a service that runs in the following order:
 + Processes the data in the data folder, where the csv input files are located, to create one csv session file (corresponding to the input files).
 + Reveals a user interface that allows him to enter several queries through the command line
@@ -34,11 +34,15 @@ The processing works by using the "Map Reduce" method twice:
 + The query request can be one of : `num_sessions`, `median_session_length` or `num_unique_visited_sites`.
 
 ## Changes required for large scale input (need to update)
-+ separate mapper and reducer in other instances
-+ fetch sessions from external DB
-+ use cache to reduce the number of external calls to the DB
++ Separate the "sessions API" and the sessions data process
++ Separate the mapper and reducer methods to some instances, according to the input size.
+Each mapper will handle amount of inputs that is known in advance (at most).
+Each reducer will handle certain keys.
+If needed, assign more instances for the relevant method.
++ Fetch sessions from external DB (instead from in-memory)
++ Use cache in the API service to reduce the number of external calls to the DB once requesting a query
 
-## Complexity (need to check)
+## Complexity
 + written in the code
 
 ## Testing the code
