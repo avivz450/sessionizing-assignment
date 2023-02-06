@@ -27,7 +27,7 @@ The processing works by using the "Map Reduce" method twice:
 
 ## How to run the program?
 + Clone this repository to your local machine.
-+ If the packages `pandas` and `mrjob` are not installed, please install them.
++ Install the requirements - `pandas` v1.5.3 and `mrjob` v0.6.12
 + Run the project by running `python .\index.py`  from the project's directory, as `index.py` is the starting point.
   After running that command, the program will create the sessions automatically from the input files (which are in the `data` folder).
   After finishing creating, you can pass your query request to the program through the command line.
