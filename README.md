@@ -41,7 +41,7 @@ The processing works by using the "Map Reduce" method twice:
   + The smaller inputs will be transferred to each one of the mapper instances
   + Each reducer instance will handle some keys.
 + Store and fetch the sessions from external DB (instead of from in-memory)
-+ Implement cache in the API service to reduce the number of external calls to the DB once requesting a query
++ Implement cache in the "sessions API" service to reduce the number of external calls to the DB once requesting a query
 
 ## Complexity
 + written in the code
