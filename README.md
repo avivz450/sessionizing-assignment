@@ -5,9 +5,10 @@
 ### How to run the program?
 + clone this repository to your local machine.
 + If the packages `pandas` and `mrjob` are not installed, please install them.
-+ Run the project by running `python .\index.py`, as `index.py` is the starting point.
++ Run the project by running `python .\index.py`  from the project's directory, as `index.py` is the starting point.
   After running that command, the program will create the sessions automatically from the input files (which are in the `data` folder).
   After finishing creating, you can pass your query request to the program through the command line.
++ The query request can be one of : `num_sessions`, `median_session_length` or `num_unique_visited_sites`.
 
 ### Changes required for large scale input (need to update)
 + seperate mapper and reducer in other instances
